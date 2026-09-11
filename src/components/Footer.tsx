@@ -133,13 +133,26 @@ export function Footer() {
             </h3>
             <ul className="space-y-3 text-sm text-ink-muted">
               <li className="flex items-center gap-2.5">
-                <Phone size={15} className="text-primary" /> +1 (555) 010-2026
+                <Phone size={15} className="text-primary shrink-0" />
+                <a
+                  href="tel:+201227569025"
+                  className="hover:text-primary transition-colors"
+                >
+                  +20 1227569025
+                </a>
               </li>
               <li className="flex items-center gap-2.5">
-                <Mail size={15} className="text-primary" /> hello@autovault.dev
+                <Mail size={15} className="text-primary shrink-0" />
+                <a
+                  href="mailto:mwhyb133@gmail.com"
+                  className="hover:text-primary transition-colors"
+                >
+                  mwhyb133@gmail.com
+                </a>
               </li>
               <li className="flex items-center gap-2.5">
-                <MapPin size={15} className="text-primary" /> Detroit, MI, USA
+                <MapPin size={15} className="text-primary shrink-0" />
+                <span>Kafr El-Sheikh, Egypt</span>
               </li>
             </ul>
             <div className="mt-5 flex gap-2">
