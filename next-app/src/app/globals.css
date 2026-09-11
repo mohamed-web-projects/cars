@@ -1,0 +1,164 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-surface-subtle: var(--surface-subtle);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-line: var(--line);
+
+  --font-display: var(--font-anton), sans-serif;
+  --font-heading: var(--font-rowdies), sans-serif;
+  --font-body: var(--font-sour-gummy), var(--font-acme), sans-serif;
+
+  --color-primary: #e11d1d;
+  --color-primary-soft: #ef4444;
+  --shadow-glass: 0 8px 32px rgb(0 0 0 / 0.18);
+  --shadow-glow: 0 0 40px rgb(255 40 40 / 0.35);
+}
+
+:root {
+  --surface: #f6f7fb;
+  --surface-raised: #ffffff;
+  --surface-subtle: #edeef5;
+  --ink: #0b0c12;
+  --ink-muted: #5b6270;
+  --line: rgb(16 19 34 / 0.08);
+}
+
+.dark {
+  --surface: #0b0c12;
+  --surface-raised: #13151f;
+  --surface-subtle: #0f1119;
+  --ink: #f4f5fa;
+  --ink-muted: #939bad;
+  --line: rgb(255 255 255 / 0.1);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--surface);
+  color: var(--ink);
+  font-family: var(--font-body);
+  min-height: 100vh;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Fluid typography scale (2026) */
+.fluid-hero {
+  font-size: clamp(2.5rem, 6vw + 1rem, 6.5rem);
+  line-height: 1.02;
+}
+.fluid-display {
+  font-size: clamp(1.875rem, 3vw + 0.5rem, 3.5rem);
+  line-height: 1.08;
+}
+.fluid-section {
+  font-size: clamp(1.5rem, 2vw + 0.4rem, 2.5rem);
+  line-height: 1.15;
+}
+
+/* Glass surfaces */
+.glass {
+  background: var(--surface-raised);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-glass);
+}
+.dark .glass {
+  background: rgb(19 21 31 / 0.55);
+}
+
+.glass-subtle {
+  backdrop-filter: blur(12px) saturate(150%);
+  -webkit-backdrop-filter: blur(12px) saturate(150%);
+  border: 1px solid var(--line);
+  background: rgb(255 255 255 / 0.06);
+}
+
+/* Gradient text accent */
+.text-gradient {
+  background: linear-gradient(120deg, #ef4444, #f97316 55%, #e11d1d);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Animated underline for nav links */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  height: 2px;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: linear-gradient(90deg, #ef4444, #f97316);
+  transition: transform 0.3s ease;
+  border-radius: 9999px;
+}
+.nav-link:hover::after,
+.nav-link.active::after {
+  transform: scaleX(1);
+}
+
+/* Marquee for quick tools / brand strip */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee 28s linear infinite;
+}
+
+/* Subtle grid backdrop for heroes */
+.bg-grid {
+  background-image: linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+@keyframes drive {
+  0% {
+    left: -25%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--surface);
+}
+::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--ink-muted) 40%, transparent);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--ink-muted) 70%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
+}
