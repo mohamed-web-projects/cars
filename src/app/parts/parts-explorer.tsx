@@ -119,7 +119,7 @@ export function PartsExplorer() {
                       rel="noopener noreferrer"
                       onClick={(e) => e.stopPropagation()}
                       aria-label={`Read more about ${part.name}`}
-                      className="inline-flex h-7 w-7 items-center justify-center rounded-full border border-line text-ink-muted opacity-0 transition-all duration-300 hover:border-primary hover:text-primary group-hover:opacity-100 focus:opacity-100"
+                      className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-line text-ink-muted transition-all duration-300 hover:border-primary hover:text-primary sm:h-7 sm:w-7 sm:opacity-0 sm:group-hover:opacity-100 sm:focus:opacity-100"
                     >
                       <ExternalLink size={13} />
                     </a>

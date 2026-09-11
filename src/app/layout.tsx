@@ -76,6 +76,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
+        suppressHydrationWarning
         className={`${anton.variable} ${rowdies.variable} ${acme.variable} ${sourGummy.variable} min-h-screen antialiased selection:bg-primary/20`}
       >
         <ThemeProvider>
